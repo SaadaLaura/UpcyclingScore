@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/bandeau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:background="#008910"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Helldiver" />
+
+    <TextView
+        android:id="@+id/Produit1"
+        android:layout_width="361dp"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="32dp"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:background="#6200EE"
+        android:clickable="false"
+        android:text="Le petit pot de crème saveur vanille\nLa laitière\nBon" />
+
+    <TextView
+        android:id="@+id/Produit2"
+        android:layout_width="361dp"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        android:background="#6200EE"
+        android:clickable="false"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="16dp"
+        android:text="Moutarde douce\nAmora\nBon"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Produit3"
+        android:layout_width="361dp"
+        android:layout_height="100dp"
+        android:layout_margin="16dp"
+        android:background="#6200EE"
+        android:clickable="false"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="16dp"
+        android:text="Eau minérale gazeuse naturelle\nPerrier\nBon"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+</LinearLayout>
+
+</LinearLayout>
