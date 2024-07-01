@@ -1,16 +1,7 @@
 package com.upcycling;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
-
-import android.app.Dialog;
-import android.widget.Toast;
+import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +9,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.Objects;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,15 +24,20 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        Button button = (Button) findViewById(R.id.main_button);
+        BottomSheetBehavior<FrameLayout> bottomSheet;
+        bottomSheet = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
+        bottomSheet.setPeekHeight(0);
+        bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        /* Button button = (Button) findViewById(R.id.main_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showBottomDialog();
             }
-        });
+        }); */
     }
 
-    private void showBottomDialog() {
+    /* private void showBottomDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.product_data_bottom_sheet_dialog);
@@ -51,5 +47,5 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         //dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-    }
+    } */
 }

@@ -11,7 +11,6 @@
 
 
     <RelativeLayout
-        android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
             <Button
@@ -21,5 +20,52 @@
                 android:text="Open bottom dialog"
                 android:layout_centerInParent="true"/>
     </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:background="@drawable/dialogbkg">
+
+        <ImageView
+            android:id="@+id/drag_bottom_sheet"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/round_remove_24"
+            android:layout_gravity="center|top"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/open_dialog" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/drag_bottom_sheet"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="viewStart"
+                android:text="This is a test"
+                android:padding="8dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:textSize="25sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/createText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:text="@string/test"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:textSize="25sp" />
+    </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
