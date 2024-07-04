@@ -1,12 +1,17 @@
 from flask import Flask, request, jsonify
 import mysql.connector
+import configparser
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+password = config['DEFAULT']['Password']
 
 app = Flask(__name__)
 
 # Configuration de la base de données
 db_config = {
     'user': 'root',
-    'password': 'MY?ver2ter',
+    'password': config['DEFAULT']['Password'],
     'host': 'localhost',
     'database': 'upcycling'
 }
@@ -24,7 +29,7 @@ def add_product():
     data = request.json
     product_name = data['productname']
     barcode = data['barcode']
-    packaging_types = data['packaging_types']  # List of packaging type IDs
+    packaging_types = data['packaging_types']
 
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -67,6 +72,7 @@ def get_reuse_ideas(product_id):
 
     return jsonify(result)
 
+# Route pour obtenir un produit avec un id donné
 @app.route('/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     connection = get_db_connection()
