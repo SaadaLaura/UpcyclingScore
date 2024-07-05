@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `productpackaging`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productpackaging` (
-  `ProductID` int NOT NULL,
   `PackagingTypeID` int NOT NULL,
-  PRIMARY KEY (`ProductID`,`PackagingTypeID`),
-  KEY `PackagingTypeID` (`PackagingTypeID`),
-  CONSTRAINT `productpackaging_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`),
+  `Barcode` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`PackagingTypeID`),
+  KEY `fk_productpackaging_barcode` (`Barcode`),
+  CONSTRAINT `fk_productpackaging_barcode` FOREIGN KEY (`Barcode`) REFERENCES `products` (`Barcode`),
   CONSTRAINT `productpackaging_ibfk_2` FOREIGN KEY (`PackagingTypeID`) REFERENCES `packagingtypes` (`PackagingTypeID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +38,7 @@ CREATE TABLE `productpackaging` (
 
 LOCK TABLES `productpackaging` WRITE;
 /*!40000 ALTER TABLE `productpackaging` DISABLE KEYS */;
-INSERT INTO `productpackaging` VALUES (1,1),(1,2),(2,5),(5,10),(6,11),(4,14),(7,16);
+INSERT INTO `productpackaging` VALUES (5,'3124480186584'),(1,'3168930171058'),(2,'3168930171058'),(16,'3248340054063'),(11,'32513020081249'),(14,'59032823'),(10,'9163937016005');
 /*!40000 ALTER TABLE `productpackaging` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-03 13:42:46
+-- Dump completed on 2024-07-05 17:16:57
