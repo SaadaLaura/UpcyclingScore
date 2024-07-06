@@ -72,71 +72,63 @@ def get_reuse_ideas(product_id):
 
     return jsonify(result)
 
-# Route pour obtenir un produit
+# Route pour obtenir un produit et ses informations
 @app.route('/products/<int:barcode>', methods=['GET'])
 def get_product(barcode):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
 
+    # Récupérer les informations du produit
     product_query = """
-    SELECT p.Barcode, p.ProductName AS name, p.ProductScore AS score, p.ImageURL AS urlImageProduct,
-           pt.TypeName AS packagingType, pt.Quantity AS quantity,
-           ri.IdeaType AS ideaType, ri.IdeaDescription AS ideaDescription, ri.Instructions AS ideaInstructions, ri.IdeaURL AS ideaURL
-    FROM Products p
-    JOIN ProductPackaging pp ON p.Barcode = pp.Barcode
-    JOIN PackagingTypes pt ON pp.PackagingTypeID = pt.PackagingTypeID
-    LEFT JOIN ReuseIdeas ri ON pt.PackagingTypeID = ri.PackagingTypeID
+    SELECT p.Barcode, p.ProductName, p.ProductScore, p.ImageUrl
+    FROM products p
     WHERE p.Barcode = %s
     """
     cursor.execute(product_query, (barcode,))
-    results = cursor.fetchall()
+    product = cursor.fetchone()
+
+    if not product:
+        cursor.close()
+        connection.close()
+        return jsonify({'error': 'Product not found'}), 404
+
+    # Récupérer les types de packaging et les scores pratiques
+    packaging_query = """
+    SELECT pt.TypeName, pt.Quantity, pt.PracticalScore
+    FROM packagingtypes pt
+    JOIN productpackaging pp ON pt.PackagingTypeID = pp.PackagingTypeID
+    WHERE pp.Barcode = %s
+    """
+    cursor.execute(packaging_query, (barcode,))
+    packagings = cursor.fetchall()
+
+    # Calculer le score moyen pratique
+    practical_scores = [p['PracticalScore'] for p in packagings]
+    if practical_scores:
+        average_score = sum(practical_scores) / len(practical_scores)
+    else:
+        average_score = 0
+
+    # Mettre à jour le score du produit
+    product['ProductScore'] = average_score
+
+    # Récupérer les idées de réutilisation pour chaque packaging
+    for packaging in packagings:
+        reuse_ideas_query = """
+        SELECT ri.IdeaType, ri.IdeaDescription, ri.Instructions, ri.IdeaURL
+        FROM reuseideas ri
+        WHERE ri.PackagingTypeID = (SELECT PackagingTypeID FROM packagingtypes WHERE TypeName = %s)
+        """
+        cursor.execute(reuse_ideas_query, (packaging['TypeName'],))
+        reuse_ideas = cursor.fetchall()
+        packaging['ReuseIdeas'] = reuse_ideas
+
+    product['Packagings'] = packagings
 
     cursor.close()
     connection.close()
 
-    if results:
-        # Préparer la structure JSON attendue
-        product_data = {
-            "barcode": results[0]['Barcode'],
-            "name": results[0]['name'],
-            "score": results[0]['score'],
-            "urlImageProduct": results[0]['urlImageProduct'],
-            "packagings": []
-        }
-
-        # Structure de données temporaire pour stocker les informations d'emballage
-        temp_packagings = {}
-        
-        for result in results:
-            packaging_type = result['packagingType']
-            quantity = result['quantity']
-            idea_type = result['ideaType']
-            idea_description = result['ideaDescription']
-            idea_instructions = result['ideaInstructions']
-            idea_url = result['ideaURL']
-
-            if packaging_type not in temp_packagings:
-                temp_packagings[packaging_type] = {
-                    "packagingType": packaging_type,
-                    "quantity": quantity,
-                    "reuseIdeas": []
-                }
-
-            if idea_type and idea_description and idea_instructions and idea_url:
-                temp_packagings[packaging_type]["reuseIdeas"].append({
-                    "ideaType": idea_type,
-                    "ideaDescription": idea_description,
-                    "ideaInstructions": idea_instructions,
-                    "ideaURL": idea_url
-                })
-
-        # Ajouter les données d'emballage structurées à product_data
-        for packaging in temp_packagings.values():
-            product_data["packagings"].append(packaging)
-
-        return jsonify(product_data)
-    else:
-        return jsonify({'error': 'Product not found'}), 404
+    return jsonify(product)
 
     
 if __name__ == '__main__':
