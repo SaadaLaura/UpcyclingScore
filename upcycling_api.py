@@ -78,7 +78,6 @@ def get_product(barcode):
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
 
-    # Récupérer les informations du produit
     product_query = """
     SELECT p.Barcode, p.ProductName, p.ProductScore, p.ImageUrl
     FROM products p
@@ -92,7 +91,6 @@ def get_product(barcode):
         connection.close()
         return jsonify({'error': 'Product not found'}), 404
 
-    # Récupérer les types de packaging et les scores pratiques
     packaging_query = """
     SELECT pt.TypeName, pt.Quantity, pt.PracticalScore
     FROM packagingtypes pt
@@ -109,10 +107,8 @@ def get_product(barcode):
     else:
         average_score = 0
 
-    # Mettre à jour le score du produit
     product['ProductScore'] = average_score
 
-    # Récupérer les idées de réutilisation pour chaque packaging
     for packaging in packagings:
         reuse_ideas_query = """
         SELECT ri.IdeaType, ri.IdeaDescription, ri.Instructions, ri.IdeaURL
@@ -123,6 +119,8 @@ def get_product(barcode):
         reuse_ideas = cursor.fetchall()
         packaging['ReuseIdeas'] = reuse_ideas
 
+        del packaging['PracticalScore']
+        
     product['Packagings'] = packagings
 
     cursor.close()
