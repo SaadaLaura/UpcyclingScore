@@ -26,11 +26,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08775758-d2c4-41a7-b941-b4ab66530435" name="Changes" comment="Ajout de la suppression + détail produit + cas si la liste des produits est vide">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ElementProduits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Produits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ProduitsAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_element_produits.xml" afterDir="false" />
+    <list default="true" id="08775758-d2c4-41a7-b941-b4ab66530435" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/render.experimental.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/logo_upcycling.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/score_pastille_background.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/dependencies-accessors/19666b7ee7477488faba75fa6199859f9eeb0a35/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$EspressoLibraryAccessors.class" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/dependencies-accessors/19666b7ee7477488faba75fa6199859f9eeb0a35/classes/org/gradle/accessors/dm/LibrariesForLibsInPluginsBlock$EspressoLibraryAccessors.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -40,11 +39,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ElementProduits.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ElementProduits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Historique.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Historique.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Produits.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Produits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ProduitsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ProduitsAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_element_produits.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_element_produits.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_historique.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_historique.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +61,48 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="InovationProject-S8-UpcyclingScore" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="InovationProject-S8-UpcyclingScore" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="InovationProject-S8-UpcyclingScore" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="InovationProject-S8-UpcyclingScore" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="resourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -100,17 +140,25 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;IT-Laura&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/laura/OneDrive - Efrei/M1/S2/Innovation Project/InovationProject-S8-UpcyclingScore&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/laura/OneDrive - Efrei/M1/S2/Innovation Project/InovationProject-S8-UpcyclingScore/app/src/main/res/drawable&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\laura\OneDrive - Efrei\M1\S2\Innovation Project\InovationProject-S8-UpcyclingScore\app\src\main\res\drawable" />
+    </key>
+  </component>
   <component name="RunManager" selected="Android App.app">
     <configuration name="MainActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
       <module name="InovationProject-S8-UpcyclingScore.app.main" />
@@ -275,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719410623086</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ajout de la suppression + détail produit + cas si la liste des produits est vide">
+      <option name="closed" value="true" />
+      <created>1719766169005</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1719766169005</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

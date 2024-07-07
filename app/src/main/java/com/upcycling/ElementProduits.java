@@ -35,18 +35,25 @@ public class ElementProduits extends Fragment {
         }
     }
 
-   @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_element_produits, container, false);
 
         TextView textView = view.findViewById(R.id.produit_text);
-        textView.setText(produit.getNom() + "\n" + produit.getMarque() + "\n" + produit.getScore());
+        textView.setText(produit.getNom() + "\n" + produit.getEmballage() + "\n" + produit.getScore());
 
         CheckBox checkBox = view.findViewById(R.id.checkbox);
 
+        // Ajouter un OnClickListener au TextView pour cocher/décocher la CheckBox
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkBox.setChecked(!checkBox.isChecked());
+            }
+        });
+
         return view;
     }
-
 }
