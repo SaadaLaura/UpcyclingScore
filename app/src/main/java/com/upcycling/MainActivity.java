@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.activity.EdgeToEdge;
@@ -14,9 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
     private TextView barcodeTextView;
-
     private final ActivityResultLauncher<Intent> barcodeLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -27,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
                         barcodeTextView.setText(barcode);
                     }
                 }
-            });
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

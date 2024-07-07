@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">InovationProject-S8-UpcyclingScore</string>
+    <string name="test">Test</string>
+    <string name="open_dialog">Drag to see more</string>
 </resources>
