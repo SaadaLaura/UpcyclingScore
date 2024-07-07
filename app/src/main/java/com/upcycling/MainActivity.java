@@ -1,6 +1,8 @@
 package com.upcycling;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
@@ -24,17 +26,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        BottomSheetBehavior<FrameLayout> bottomSheet;
-        bottomSheet = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
-        bottomSheet.setPeekHeight(0);
+        BottomSheetBehavior<FrameLayout> bottomSheet = BottomSheetBehavior.from(
+                                                            findViewById(R.id.bottom_sheet));
         bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
 
-        /* Button button = (Button) findViewById(R.id.main_button);
+        Button button = (Button) findViewById(R.id.main_button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                showBottomDialog();
+                showBottomSheet(bottomSheet);
             }
-        }); */
+        });
+    }
+
+    private void showBottomSheet (BottomSheetBehavior<FrameLayout> bottomSheet) {
+        // TODO : Get Product data from API
+        bottomSheet.setPeekHeight(750); // TODO : Set Peek height at the right place (just below the main part)
+        bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 
     /* private void showBottomDialog() {
