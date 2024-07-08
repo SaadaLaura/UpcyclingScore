@@ -6,22 +6,15 @@ import java.io.Serializable;
 public class Produits implements Serializable {
     private boolean showCheckBox;
     private String nom;
-    private String emballage;
-    private int score;
-    private boolean isChecked = false;
+    private String marque;
+    private String score;
 
-    public Produits(String nom, String emballage, int score) {
+    public Produits(String nom, String marque, String score) {
         this.nom = nom;
-        this.emballage = emballage;
+        this.marque = marque;
         this.score = score;
     }
-    public boolean isChecked() {
-        return isChecked;
-    }
 
-    public void setChecked(boolean checked) {
-        this.isChecked = checked;
-    }
     public boolean isShowCheckBox() {
         return showCheckBox;
     }
@@ -34,21 +27,11 @@ public class Produits implements Serializable {
         return nom;
     }
 
-    public String getEmballage() {
-        return emballage;
+    public String getMarque() {
+        return marque;
     }
 
-    public int getScore() {
+    public String getScore() {
         return score;
     }
-    public int getScoreColor() {
-        if (score >= 15) {
-            return R.color.green; // Vert pour les scores >= 15
-        } else if (score >= 10) {
-            return R.color.orange; // Orange pour les scores entre 10 et 14
-        } else {
-            return R.color.red; // Rouge pour les scores < 10
-        }
-    }
-
 }

@@ -2,8 +2,5 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="green">#56DA62</color>
-    <color name="red">#FF4242</color>
-    <color name="orange">#FFBF42</color>
-    <color name="beige">#E9DECB</color>
+    <color name="red">#FFFF0000</color>
 </resources>
