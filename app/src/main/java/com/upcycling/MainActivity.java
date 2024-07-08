@@ -19,6 +19,39 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Product displayProduct = new Product(
+            2148818887685L,
+            "Skip Capsules",
+            14,
+            "https://www.azerty.com/",
+            new Packaging[]{
+                    new Packaging(
+                            "Boite en carton",
+                            2,
+                            new ReuseIdea[]{
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.PRACTICAL,
+                                            "Stockage",
+                                            "Réutiliser pour stocker des choses",
+                                            "https://www.azerty.com/"
+                                    ),
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.PRACTICAL,
+                                            "Chapeau",
+                                            "Découpez et pliez la boite afin de pouvoir vous protéger de la pluie",
+                                            "https://www.azerty.com/"
+                                    ),
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.ARTISTIC,
+                                            "Origami",
+                                            "Un peu chiant",
+                                            "https://www.azerty.com/"
+                                    ),
+                            }
+                    )
+            }
+    );
+
     private TextView barcodeTextView;
     private final ActivityResultLauncher<Intent> barcodeLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -69,5 +102,9 @@ public class MainActivity extends AppCompatActivity {
         // TODO : Get Product data from API
         bottomSheet.setPeekHeight(750); // TODO : Set Peek height at the right place (just below the main part)
         bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    private void insertProductData(Product product) {
+
     }
 }

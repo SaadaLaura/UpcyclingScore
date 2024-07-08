@@ -47,15 +47,33 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/drag_bottom_sheet"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/barcode_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scan a barcode to display the result"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5" />
+<!--            <TextView-->
+<!--                android:id="@+id/product_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Scan a barcode to display the result"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.5" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/packagings_list"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Scan a barcode to display the result"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.5" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/score"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Scan a barcode to display the result"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintVertical_bias="0.5" />-->
         </RelativeLayout>
 
     </FrameLayout>
@@ -65,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:contentDescription="Scan button"
         app:backgroundTint="@color/green"
         android:layout_gravity="bottom|end" />
 <!--    android:src="@drawable/ic_scan"-->
