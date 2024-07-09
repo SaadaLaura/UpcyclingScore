@@ -29,7 +29,7 @@ CREATE TABLE `packagingtypes` (
   `quantity` int DEFAULT NULL,
   PRIMARY KEY (`PackagingTypeID`),
   UNIQUE KEY `uc_TypeName` (`TypeName`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `packagingtypes` (
 
 LOCK TABLES `packagingtypes` WRITE;
 /*!40000 ALTER TABLE `packagingtypes` DISABLE KEYS */;
-INSERT INTO `packagingtypes` VALUES (1,'Bouteille plastique',7,1),(2,'Bouchon plastique',5,1),(3,'Pot',8,1),(4,'Boîte de conserve',7,1),(5,'Cannette',6,1),(6,'Boîte de céréales',6,1),(9,'Sac en papier',5,1),(10,'Bouteille en verre',8,1),(11,'Carton d\'œufs',7,1),(12,'Sac en plastique',4,1),(13,'Boîte à chaussures',6,1),(14,'Bocal en verre',8,1),(16,'Brique en carton',6,1);
+INSERT INTO `packagingtypes` VALUES (1,'Bouteille plastique',14,1),(2,'Bouchon plastique',10,1),(3,'Pot',16,1),(4,'Boîte de conserve',14,1),(5,'Cannette',12,1),(6,'Boîte de céréales',12,1),(9,'Sac en papier',10,1),(10,'Bouteille en verre',16,1),(11,'Carton d\'œufs',14,1),(12,'Sac en plastique',8,1),(13,'Boîte à chaussures',12,1),(14,'Bocal en verre',16,1),(16,'Brique en carton',12,1),(23,'Petite boite de conserve',16,1),(24,'Bouteille plastique 500ml',14,1),(25,'Petit Carton avec trous',10,1),(26,'Petits pots en verre',18,4),(27,'Opercules aluminium',0,4);
 /*!40000 ALTER TABLE `packagingtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05 17:16:57
+-- Dump completed on 2024-07-09 16:50:03
