@@ -22,4 +22,9 @@ public class Packaging {
     public ReuseIdea[] getReuseIdeas() {
         return reuseIdeas;
     }
+
+    @Override
+    public String toString() {
+        return this.packagingType;
+    }
 }

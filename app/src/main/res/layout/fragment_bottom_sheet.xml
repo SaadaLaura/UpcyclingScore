@@ -61,11 +61,19 @@
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
-            <com.google.android.material.tabs.TabLayout
+            
+            <Spinner
+                android:id="@+id/packagings_selectbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/produit_text">
+                android:layout_below="@id/produit_text"/>
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/reuse_type_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/packagings_selectbox">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -78,6 +86,13 @@
                     android:text="Artistique" />
 
             </com.google.android.material.tabs.TabLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/reuse_ideas_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reuse_type_category"
+                tools:listitem="@layout/reuse_idea_item"/>
         </RelativeLayout>
 
     </FrameLayout>

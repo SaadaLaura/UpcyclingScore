@@ -17,39 +17,45 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import android.app.AlertDialog;
+
 public class MainActivity extends AppCompatActivity {
 
     private Product displayProduct = new Product(
-            2148818887685L,
-            "Skip Capsules",
-            14,
-            "https://www.azerty.com/",
-            new Packaging[]{
-                    new Packaging(
-                            "Boite en carton",
-                            2,
-                            new ReuseIdea[]{
-                                    new ReuseIdea(
-                                            ReuseIdea.ReuseType.PRACTICAL,
-                                            "Stockage",
-                                            "Réutiliser pour stocker des choses",
-                                            "https://www.azerty.com/"
-                                    ),
-                                    new ReuseIdea(
-                                            ReuseIdea.ReuseType.PRACTICAL,
-                                            "Chapeau",
-                                            "Découpez et pliez la boite afin de pouvoir vous protéger de la pluie",
-                                            "https://www.azerty.com/"
-                                    ),
-                                    new ReuseIdea(
-                                            ReuseIdea.ReuseType.ARTISTIC,
-                                            "Origami",
-                                            "Un peu chiant",
-                                            "https://www.azerty.com/"
-                                    ),
-                            }
-                    )
-            }
+        2148818887685L,
+        "Skip Capsules",
+        14,
+        "https://www.azerty.com/",
+        new Packaging[]{
+            new Packaging(
+                "Boite en carton",
+                2,
+                new ReuseIdea[]{
+                    new ReuseIdea(
+                        ReuseIdea.ReuseType.PRACTICAL,
+                        "Stockage",
+                        "Réutiliser pour stocker des choses",
+                        "https://www.azerty.com/"
+                    ),
+                    new ReuseIdea(
+                        ReuseIdea.ReuseType.PRACTICAL,
+                        "Chapeau",
+                        "Découpez et pliez la boite afin de pouvoir vous protéger de la pluie",
+                        "https://www.azerty.com/"
+                    ),
+                    new ReuseIdea(
+                        ReuseIdea.ReuseType.ARTISTIC,
+                        "Origami",
+                        "Un peu chiant",
+                        "https://www.azerty.com/"
+                    ),
+                }
+            )
+        }
     );
 
 //    private final ActivityResultLauncher<Intent> barcodeLauncher = registerForActivityResult(
@@ -102,6 +108,46 @@ public class MainActivity extends AppCompatActivity {
                 bottomSheetFragment.showBottomSheet(displayProduct, true);
             }
         });
+
+        fetchProductDetails(3019081239237L); // Example barcode
+    }
+
+    private void showResultPopup(String message) {
+        runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Résultat de la requête");
+            builder.setMessage(message);
+            builder.setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });}
+
+    private void fetchProductDetails(long codebarre) {
+        new Thread(() -> {
+            String urlString = "http://10.188.86.213:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+                    showResultPopup("Réponse de l'API : " + response.toString());
+                } else {
+                    showResultPopup("Erreur API : Code de réponse : " + responseCode);
+                }
+            } catch (Exception e) {
+                showResultPopup("Exception API : " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     // TODO : Add Historic

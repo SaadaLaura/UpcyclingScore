@@ -7,6 +7,18 @@ public class ReuseIdea {
         ARTISTIC
     }
 
+    static ReuseType getType(String reuseTypeString) {
+        switch (reuseTypeString.toLowerCase()) {
+            case "pratique":
+                return ReuseType.PRACTICAL;
+            case "artistique":
+                return ReuseType.ARTISTIC;
+            default:
+                // TODO : Do error management
+                return ReuseType.PRACTICAL;
+        }
+    }
+
     private ReuseType reuseType;
     private String name;
     private String description;
