@@ -57,7 +57,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="27dp"
                 android:layout_toEndOf="@id/produit_text"
-                android:background="@drawable/score_pastille_background"
+                android:background="@drawable/score_pastille"
                 android:gravity="center"
                 android:textSize="16sp"
                 android:textStyle="bold" />
