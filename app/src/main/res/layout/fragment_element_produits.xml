@@ -16,10 +16,11 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp">
 
-        <View
+        <ImageView
+            android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/orange" />
+             />
 
         <CheckBox
             android:id="@+id/checkbox"
@@ -44,16 +45,23 @@
         android:textColor="@color/black"
         android:textSize="15sp" />
 
+    <FrameLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentEnd="true"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/score_pastille">
+
     <TextView
         android:id="@+id/score_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="30dp"
-        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:textSize="15sp"
         android:textColor="@color/black"
-         />
+        android:padding="4dp" />
+</FrameLayout>
 
     <View
         android:id="@+id/divider"

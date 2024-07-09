@@ -13,8 +13,11 @@ import androidx.fragment.app.Fragment;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import android.app.AlertDialog;
 
 public class Historique extends Fragment {
 
@@ -54,12 +57,12 @@ public class Historique extends Fragment {
 
         Produits FirstProduit = new Produits(
                 2148818887685L,
-                "Skip Capsules",
+                "Ice Tea Raspberry",
                 14,
-                "https://www.azerty.com/",
+                "https://erposcar.msol.dev/focus/products/3502110010674.webp",
                 new Packaging[]{
                         new Packaging(
-                                "Boite en carton",
+                                "Bouteille en plastique",
                                 2,
                                 new ReuseIdea[]{
                                         new ReuseIdea(
@@ -88,7 +91,7 @@ public class Historique extends Fragment {
                 301908123,
                 "Thon entier naturel",
                 10,
-                "https://www.azerty.com/",
+                "https://images.openfoodfacts.org/images/products/301/908/123/9237/front_fr.36.full.jpg",
                 new Packaging[]{
                         new Packaging(
                                 "Boite de conserve",
@@ -143,6 +146,48 @@ public class Historique extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        //fetchProductDetails(3019081239237L);
         return view;
     }
+
+    /* Pour Faire appel à l'API  en localhost
+    private void showResultPopup(String message) {
+        getActivity().runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Résultat de la requête");
+            builder.setMessage(message);
+            builder.setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });}
+
+
+    private void fetchProductDetails(long codebarre) {
+        new Thread(() -> {
+            String urlString = "http://10.0.2.2:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+                    showResultPopup("Réponse de l'API : " + response.toString());
+                } else {
+                    showResultPopup("Erreur API : Code de réponse : " + responseCode);
+                }
+            } catch (Exception e) {
+                showResultPopup("Exception API : " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
+    }
+    */
 }

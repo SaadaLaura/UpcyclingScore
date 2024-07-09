@@ -1,5 +1,6 @@
 package com.upcycling;
 
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.CheckBox;
 import android.widget.Button;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
@@ -16,6 +18,9 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
+import android.graphics.Color;
+import coil.Coil;
+import coil.request.ImageRequest;
 
 
 
@@ -30,12 +35,14 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView produitText, scoreText;
         public CheckBox checkBox;
+        public ImageView imageView;
 
         public ViewHolder(View view) {
             super(view);
             produitText = view.findViewById(R.id.produit_text);
             scoreText = view.findViewById(R.id.score_text);
             checkBox = view.findViewById(R.id.checkbox);
+            imageView = view.findViewById(R.id.image_view);
         }
     }
 
@@ -88,6 +95,14 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
 
         holder.scoreText.setText(String.valueOf(produit.getScore()) + "/20");
 
+
+        ImageRequest request = new ImageRequest.Builder(holder.imageView.getContext())
+                .data(produit.getUrlImage())
+                .target(holder.imageView)
+                .crossfade(true)
+                .build();
+
+        Coil.imageLoader(holder.imageView.getContext()).enqueue(request);
 
         // Set the visibility of the CheckBox based on the showCheckBox field of the product
         boolean isSelectionMode = produit.isShowCheckBox();
