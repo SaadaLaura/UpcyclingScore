@@ -41,12 +41,41 @@ public class ElementProduits extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_element_produits, container, false);
 
-        TextView textView = view.findViewById(R.id.produit_text);
-        textView.setText(produit.getNom() + "\n" + produit.getMarque() + "\n" + produit.getScore());
+        TextView textView = getView().findViewById(R.id.produit_text);
+        String packagingLine;
+        switch (produit.getPackagings().length){
+            case 0:
+                packagingLine = "ERREUR: Pas d'emballage";
+                break;
+            case 1:
+                packagingLine = produit.getPackagings()[0].getPackagingType();
+                break;
+            case 2:
+                packagingLine = produit.getPackagings()[0].getPackagingType() + ", " +
+                           produit.getPackagings()[1].getPackagingType();
+                break;
+            default:
+                packagingLine = produit.getPackagings()[0].getPackagingType() + ", " +
+                           produit.getPackagings()[1].getPackagingType() + ", ...";
+                break;
+           }
+           String productText = produit.getName() + "\n" + packagingLine;
+           textView.setText(productText);
+
+
+        TextView scoreView = view.findViewById(R.id.score_text);
+        scoreView.setText(produit.getScore());
 
         CheckBox checkBox = view.findViewById(R.id.checkbox);
+        // Ajouter un OnClickListener au TextView pour cocher/décocher la CheckBox
+        textView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               checkBox.setChecked(!checkBox.isChecked());
+           }
+        });
 
-        return view;
+       return view;
     }
 
 }

@@ -5,14 +5,28 @@ import java.io.Serializable;
 
 public class Produits implements Serializable {
     private boolean showCheckBox;
-    private String nom;
-    private String marque;
-    private String score;
+    private boolean isChecked = false;
+    private long barcode;
+    private String name;
+    private int score;
+    private String urlImage;
+    private Packaging[] packagings;
 
-    public Produits(String nom, String marque, String score) {
-        this.nom = nom;
-        this.marque = marque;
+
+    public Produits(long barcode, String name, int score, String urlImage, Packaging[] packagings) {
+        this.barcode = barcode;
+        this.name = name;
         this.score = score;
+        this.urlImage = urlImage;
+        this.packagings = packagings;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.isChecked = checked;
     }
 
     public boolean isShowCheckBox() {
@@ -22,16 +36,23 @@ public class Produits implements Serializable {
     public void setShowCheckBox(boolean showCheckBox) {
         this.showCheckBox = showCheckBox;
     }
-
-    public String getNom() {
-        return nom;
+    public long getBarcode() {
+        return barcode;
     }
 
-    public String getMarque() {
-        return marque;
+    public String getName() {
+        return name;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
+    }
+
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public Packaging[] getPackagings() {
+        return packagings;
     }
 }
