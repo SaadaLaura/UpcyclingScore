@@ -21,31 +21,6 @@ public class ElementProduits extends Fragment {
         // Required empty public constructor
     }
 
-    public static String getScoreColor(float score) {
-        // Définition des couleurs en RGB
-        int redStart = 255, greenStart = 66, blueStart = 66; // Rouge
-        int redMiddle = 255, greenMiddle = 191, blueMiddle = 66; // Orange
-        int redEnd = 86, greenEnd = 218, blueEnd = 98; // Vert
-
-        int red, green, blue;
-
-        if (score <= 10) {
-            // Interpolation entre rouge et orange
-            float ratio = score / 10;
-            red = (int) (redStart + ratio * (redMiddle - redStart));
-            green = (int) (greenStart + ratio * (greenMiddle - greenStart));
-            blue = (int) (blueStart + ratio * (blueMiddle - blueStart));
-        } else {
-            // Interpolation entre orange et vert
-            float ratio = (score - 10) / 10;
-            red = (int) (redMiddle + ratio * (redEnd - redMiddle));
-            green = (int) (greenMiddle + ratio * (greenEnd - greenMiddle));
-            blue = (int) (blueMiddle + ratio * (blueEnd - blueMiddle));
-        }
-
-        // Conversion en chaîne hexadécimale
-        return String.format("#%02X%02X%02X", red, green, blue);
-    }
     public static ElementProduits newInstance(Produits produit) {
         ElementProduits fragment = new ElementProduits();
         Bundle args = new Bundle();

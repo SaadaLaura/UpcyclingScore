@@ -58,7 +58,7 @@ public class Historique extends Fragment {
         Produits FirstProduit = new Produits(
                 2148818887685L,
                 "Ice Tea Raspberry",
-                14,
+                0,
                 "https://erposcar.msol.dev/focus/products/3502110010674.webp",
                 new Packaging[]{
                         new Packaging(
@@ -90,7 +90,7 @@ public class Historique extends Fragment {
         Produits SecondProduit = new Produits(
                 301908123,
                 "Thon entier naturel",
-                10,
+                18,
                 "https://images.openfoodfacts.org/images/products/301/908/123/9237/front_fr.36.full.jpg",
                 new Packaging[]{
                         new Packaging(

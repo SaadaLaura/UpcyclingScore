@@ -31,9 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08775758-d2c4-41a7-b941-b4ab66530435" name="Changes" comment="Modif du visuel Attention les pastilles ne sont pas faites + la place des images c'est juste un carré orange !!">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/score_pastille.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
+    <list default="true" id="08775758-d2c4-41a7-b941-b4ab66530435" name="Changes" comment="Img + code pour l'appel a l'API">
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -42,13 +40,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ElementProduits.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ElementProduits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Historique.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Historique.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Produits.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/Produits.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ProduitsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/upcycling/ProduitsAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_element_produits.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_element_produits.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719410623086</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Img + code pour l'appel a l'API">
+      <option name="closed" value="true" />
+      <created>1720560530759</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720560530759</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -304,6 +308,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout de la page historique avec des infos en brutes" />
     <MESSAGE value="Ajout de la suppression + détail produit + cas si la liste des produits est vide" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de la suppression + détail produit + cas si la liste des produits est vide" />
+    <MESSAGE value="Img + code pour l'appel a l'API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Img + code pour l'appel a l'API" />
   </component>
 </project>

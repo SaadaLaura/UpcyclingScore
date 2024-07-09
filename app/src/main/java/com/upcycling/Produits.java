@@ -21,6 +21,16 @@ public class Produits implements Serializable {
         this.packagings = packagings;
     }
 
+    public int getScoreColor() {
+        if (this.score >= 15) {
+            return R.color.green; // Vert pour les scores >= 15
+        } else if (this.score >= 10) {
+            return R.color.orange; // Orange pour les scores entre 10 et 14
+        } else {
+            return R.color.red; // Rouge pour les scores < 10
+        }
+    }
+
     public boolean isChecked() {
         return isChecked;
     }

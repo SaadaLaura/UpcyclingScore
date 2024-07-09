@@ -18,7 +18,7 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
-import android.graphics.Color;
+import androidx.core.content.ContextCompat;
 import coil.Coil;
 import coil.request.ImageRequest;
 
@@ -36,6 +36,7 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
         public TextView produitText, scoreText;
         public CheckBox checkBox;
         public ImageView imageView;
+        public FrameLayout scoreframeLayout;
 
         public ViewHolder(View view) {
             super(view);
@@ -43,6 +44,7 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
             scoreText = view.findViewById(R.id.score_text);
             checkBox = view.findViewById(R.id.checkbox);
             imageView = view.findViewById(R.id.image_view);
+            scoreframeLayout = view.findViewById(R.id.score_frame_layout);
         }
     }
 
@@ -94,8 +96,12 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
         holder.produitText.setText(builders);
 
         holder.scoreText.setText(String.valueOf(produit.getScore()) + "/20");
+        // Appeler getScoreColor pour obtenir l'ID de la couleur
+        int colorId = produit.getScoreColor();
+        // Utiliser l'ID de la couleur pour définir la couleur du texte ou du fond
+        holder.scoreframeLayout.setBackgroundTintList(ContextCompat.getColorStateList(holder.itemView.getContext(), colorId));
 
-
+        // Load the image using Coil
         ImageRequest request = new ImageRequest.Builder(holder.imageView.getContext())
                 .data(produit.getUrlImage())
                 .target(holder.imageView)
