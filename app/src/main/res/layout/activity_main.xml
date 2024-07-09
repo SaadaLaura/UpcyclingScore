@@ -8,75 +8,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" >-->
 
-<!--        <Button-->
-<!--            android:id="@+id/scan_button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Scan Barcode"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.9" />-->
-<!--    </RelativeLayout>-->
 
-    <FrameLayout
-        android:id="@+id/bottom_sheet"
-        android:orientation="vertical"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/bottom_sheet_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_hideable="true"
-        android:background="@drawable/dialogbkg">
-
-        <ImageView
-            android:id="@+id/drag_bottom_sheet"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/round_remove_24"
-            android:layout_gravity="center|top"
-            android:scaleType="centerCrop"
-            android:contentDescription="@string/open_dialog" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/drag_bottom_sheet"
-            android:orientation="vertical">
-<!--            <TextView-->
-<!--                android:id="@+id/product_name"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Scan a barcode to display the result"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.5" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/packagings_list"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Scan a barcode to display the result"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.5" />-->
-<!--            <TextView-->
-<!--                android:id="@+id/score"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Scan a barcode to display the result"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.5" />-->
-        </RelativeLayout>
-
-    </FrameLayout>
+        android:name="com.upcycling.BottomSheetFragment"
+        tools:layout="@layout/fragment_bottom_sheet" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/scan_fab"
@@ -86,6 +25,12 @@
         android:contentDescription="Scan button"
         app:backgroundTint="@color/green"
         android:layout_gravity="bottom|end" />
-<!--    android:src="@drawable/ic_scan"-->
+    <!--    android:src="@drawable/ic_scan"-->
+
+    <Button
+        android:id="@+id/test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

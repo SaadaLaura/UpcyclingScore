@@ -52,24 +52,25 @@ public class MainActivity extends AppCompatActivity {
             }
     );
 
-    private TextView barcodeTextView;
-    private final ActivityResultLauncher<Intent> barcodeLauncher = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == RESULT_OK) {
-                    Intent data = result.getData();
-                    if (data != null) {
-                        String barcode = data.getStringExtra("barcode");
-                        barcodeTextView.setText(barcode);
-
-                        BottomSheetBehavior<FrameLayout> bottomSheet = BottomSheetBehavior.from(
-                                findViewById(R.id.bottom_sheet));
-                        // bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
-                        showBottomSheet(bottomSheet);
-                    }
-                }
-            }
-    );
+//    private final ActivityResultLauncher<Intent> barcodeLauncher = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            result -> {
+//                if (result.getResultCode() == RESULT_OK) {
+//                    Intent data = result.getData();
+//                    if (data != null) {
+//                        String barcode = data.getStringExtra("barcode");
+//                        //barcodeTextView.setText(barcode);
+//
+//                        insertProductData(displayProduct);
+//
+//                        BottomSheetBehavior<FrameLayout> bottomSheet = BottomSheetBehavior.from(
+//                                findViewById(R.id.bottom_sheet));
+//                        // bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+//                        showBottomSheet(bottomSheet);
+//                    }
+//                }
+//            }
+//    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,29 +83,26 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        barcodeTextView = findViewById(R.id.barcode_text_view);
         FloatingActionButton scanFab = findViewById(R.id.scan_fab);
 
         scanFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ScannerActivity.class);
-                barcodeLauncher.launch(intent);
+//                barcodeLauncher.launch(intent);
+                startActivity(intent);
+//                finish();
             }
         });
-
-        BottomSheetBehavior<FrameLayout> bottomSheet = BottomSheetBehavior.from(
-                findViewById(R.id.bottom_sheet));
-        bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        BottomSheetFragment bottomSheetFragment = (BottomSheetFragment) getSupportFragmentManager().findFragmentById(R.id.bottom_sheet_fragment_container);
+        Button testbutton = findViewById(R.id.test_button);
+        testbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetFragment.showBottomSheet(displayProduct, true);
+            }
+        });
     }
 
-    private void showBottomSheet (BottomSheetBehavior<FrameLayout> bottomSheet) {
-        // TODO : Get Product data from API
-        bottomSheet.setPeekHeight(750); // TODO : Set Peek height at the right place (just below the main part)
-        bottomSheet.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
-
-    private void insertProductData(Product product) {
-
-    }
+    // TODO : Add Historic
 }

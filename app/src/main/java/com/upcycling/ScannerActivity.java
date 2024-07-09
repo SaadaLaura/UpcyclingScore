@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Size;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
@@ -31,6 +33,40 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ScannerActivity extends AppCompatActivity {
+
+    private Product displayProduct = new Product(
+            2148818887685L,
+            "Skip Capsules",
+            14,
+            "https://www.azerty.com/",
+            new Packaging[]{
+                    new Packaging(
+                            "Boite en carton",
+                            2,
+                            new ReuseIdea[]{
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.PRACTICAL,
+                                            "Stockage",
+                                            "Réutiliser pour stocker des choses",
+                                            "https://www.azerty.com/"
+                                    ),
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.PRACTICAL,
+                                            "Chapeau",
+                                            "Découpez et pliez la boite afin de pouvoir vous protéger de la pluie",
+                                            "https://www.azerty.com/"
+                                    ),
+                                    new ReuseIdea(
+                                            ReuseIdea.ReuseType.ARTISTIC,
+                                            "Origami",
+                                            "Un peu chiant",
+                                            "https://www.azerty.com/"
+                                    ),
+                            }
+                    )
+            }
+    );
+
     private static final int CAMERA_PERMISSION_REQUEST_CODE = 1;
     private ExecutorService cameraExecutor;
 
@@ -76,25 +112,23 @@ public class ScannerActivity extends AppCompatActivity {
         imageAnalysis.setAnalyzer(cameraExecutor, imageProxy -> {
             if (imageProxy.getImage() != null) {
                 InputImage inputImage = InputImage.fromMediaImage(imageProxy.getImage(), imageProxy.getImageInfo().getRotationDegrees());
-                scanner.process(inputImage)
-                        .addOnSuccessListener(barcodes -> {
-                            for (Barcode barcode : barcodes) {
-                                String rawValue = barcode.getRawValue();
-                                Toast.makeText(ScannerActivity.this, "Barcode: " + rawValue, Toast.LENGTH_SHORT).show();
+                scanner.process(inputImage).addOnSuccessListener(barcodes -> {
+                    for (Barcode barcode : barcodes) {
+                        String rawValue = barcode.getRawValue();
+                        Toast.makeText(ScannerActivity.this, "Barcode: " + rawValue, Toast.LENGTH_SHORT).show();
 
-                                // Set result and finish activity
-                                Intent resultIntent = new Intent();
-                                resultIntent.putExtra("barcode", rawValue);
-                                setResult(RESULT_OK, resultIntent);
-                                finish();
-                            }
-                        })
-                        .addOnFailureListener(e -> {
-                            // Task failed with an exception
-                        })
-                        .addOnCompleteListener(task -> {
-                            imageProxy.close();
-                        });
+                        BottomSheetFragment bottomSheetFragment = (BottomSheetFragment) getSupportFragmentManager().findFragmentById(R.id.bottom_sheet_fragment_container);
+
+                        // TODO : Get Product data from API
+                        bottomSheetFragment.showBottomSheet(displayProduct, false);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    imageProxy.close();
+                })
+                .addOnCompleteListener(task -> {
+                    imageProxy.close();
+                });
             }
         });
 

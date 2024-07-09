@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="true"
+        android:background="@drawable/dialogbkg">
+
+        <ImageView
+            android:id="@+id/drag_bottom_sheet"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/round_remove_24"
+            android:layout_gravity="center|top"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/open_dialog" />
+
+        <!--Contenu-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/drag_bottom_sheet"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/produit_text"
+                android:layout_width="270dp"
+                android:layout_height="100dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:paddingHorizontal="32dp"
+                android:paddingVertical="16dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:contentDescription="test" />
+
+            <TextView
+                android:id="@+id/score_pastille"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignTop="@id/produit_text"
+                android:layout_alignBottom="@id/produit_text"
+                android:layout_marginStart="-10dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="27dp"
+                android:layout_toEndOf="@id/produit_text"
+                android:background="@drawable/score_pastille_background"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/produit_text">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pratique" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Artistique" />
+
+            </com.google.android.material.tabs.TabLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
