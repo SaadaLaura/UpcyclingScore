@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,11 +80,12 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        History history = Room.databaseBuilder(getApplicationContext(), History.class,
-                    "history").build();
+        History history = Room.databaseBuilder(getApplicationContext(), History.class, "history")
+                    .allowMainThreadQueries()
+                    .build();
         HistoryRequests historyRequests = history.historyRequests();
-        historyRequests.insertAll(new ProductHistory(123123, "test",
-                12.5f, "azerty", "azerty, azerty, azerty"));
+
+
         deleteButton = findViewById(R.id.delete_button);
         cancelButton = findViewById(R.id.cancel_button); // Initialize the cancel button
 

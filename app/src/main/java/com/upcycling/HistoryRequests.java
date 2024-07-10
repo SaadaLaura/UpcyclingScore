@@ -1,7 +1,6 @@
 package com.upcycling;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -21,6 +20,9 @@ public interface HistoryRequests {
     @Insert
     void insertAll(ProductHistory... products);
 
-    @Delete
-    void delete(ProductHistory product);
+    @Query("DELETE FROM product where barcode = :productBarcode")
+    void delete(int productBarcode);
+
+    @Query("DELETE from product")
+    void clear();
 }
