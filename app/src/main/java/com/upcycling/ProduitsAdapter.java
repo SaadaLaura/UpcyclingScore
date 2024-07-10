@@ -126,12 +126,17 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
                 holder.checkBox.setChecked(newCheckedState);
                 produit.setChecked(newCheckedState); // Update isChecked state when text is clicked in selection mode
             } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setTitle("Détail du produit");
-                builder.setMessage("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
-                builder.setPositiveButton("OK", null);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                // Show BottomSheetFragment
+                int pos = holder.getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION) {
+                    Product clickedProduct = produitsList.get(pos);
+                    MainActivity mainActivity = (MainActivity) v.getContext(); // Get MainActivity instance
+                    BottomSheetFragment bottomSheetFragment = (BottomSheetFragment) mainActivity.getSupportFragmentManager()
+                            .findFragmentById(R.id.bottom_sheet_fragment_container);
+                    if (bottomSheetFragment != null) {
+                        bottomSheetFragment.showBottomSheet(clickedProduct, true);
+                    }
+                }
             }
         });
 

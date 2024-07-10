@@ -1,20 +1,26 @@
 package com.upcycling;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Spinner;
 
@@ -26,10 +32,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import coil.Coil;
+import coil.request.ImageRequest;
+
 
 public class BottomSheetFragment extends Fragment {
 
     private TextView productTextView;
+    private TextView scoreTextView;
+    private FrameLayout scoreframeLayout;
 
     private TabLayout reuseTypeTabView;
 
@@ -40,7 +51,7 @@ public class BottomSheetFragment extends Fragment {
     private ReuseIdeaAdapter reuseIdeaAdapter;
 
     public BottomSheetBehavior<FrameLayout> bottomSheetBehavior;
-
+    public ImageView imageView;
     private Packaging selectedPackaging;
     private ReuseIdea.ReuseType selectedReuseType;
 
@@ -52,8 +63,10 @@ public class BottomSheetFragment extends Fragment {
         FrameLayout bottomSheetView = view.findViewById(R.id.bottom_sheet);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetView);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-
+        imageView = view.findViewById(R.id.image_view);
         productTextView = view.findViewById(R.id.produit_text);
+        scoreTextView = view.findViewById(R.id.score_text);
+        scoreframeLayout = view.findViewById(R.id.score_frame_layout);
 
         reuseTypeTabView = view.findViewById(R.id.reuse_type_category);
         reuseTypeTabView.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -137,8 +150,23 @@ public class BottomSheetFragment extends Fragment {
                         product.getPackagings()[1].getPackagingType() + ", ...";
                 break;
         }
-        String productText = product.getName() + "\n" + packagingLine;
-        productTextView.setText(productText);
+
+        SpannableStringBuilder builders = new SpannableStringBuilder();
+        builders.append(product.getName()).append("\n");
+
+        SpannableString packagingsSpannable = new SpannableString(packagingLine);
+        packagingsSpannable.setSpan(new StyleSpan(Typeface.ITALIC), 0, packagingsSpannable.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builders.append(packagingsSpannable);
+
+        productTextView.setText(builders);
+
+        productTextView.setText(builders);
+
+        scoreTextView.setText(String.valueOf(product.getScore()) + "/20");
+        // Appeler getScoreColor pour obtenir l'ID de la couleur
+        int colorId = product.getScoreColor();
+        // Utiliser l'ID de la couleur pour définir la couleur du texte ou du fond
+        scoreframeLayout.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), colorId));
 
         // Create an ArrayAdapter using the string array and a default spinner layout.
         ArrayAdapter<Packaging> adapter = new ArrayAdapter<>(
@@ -156,7 +184,14 @@ public class BottomSheetFragment extends Fragment {
         updateReuseIdeas();
 
 
-        // TODO : Fill the rest of the content (see Figma)
+        //image
+        ImageRequest request = new ImageRequest.Builder(imageView.getContext())
+                .data(product.getUrlImage())
+                .target(imageView)
+                .crossfade(true)
+                .build();
+
+        Coil.imageLoader(imageView.getContext()).enqueue(request);
     }
 
     private void updateReuseIdeas() {

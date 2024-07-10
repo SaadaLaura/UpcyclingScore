@@ -46,14 +46,14 @@
         android:textSize="15sp" />
 
     <FrameLayout
-    android:id="@+id/score_frame_layout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_marginEnd="10dp"
-    android:layout_marginTop="30dp"
-    android:background="@drawable/score_pastille">
-
+        android:id="@+id/score_frame_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/produit_text"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/score_pastille">
     <TextView
         android:id="@+id/score_text"
         android:layout_width="wrap_content"

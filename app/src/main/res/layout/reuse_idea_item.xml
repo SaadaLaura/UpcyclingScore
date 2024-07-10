@@ -14,20 +14,27 @@
         android:id="@+id/reuse_idea_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/reuse_idea_image"/>
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@id/reuse_idea_image"
+        android:textSize="15sp"
+        />
 
     <TextView
         android:id="@+id/reuse_idea_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/reuse_idea_text"/>
+        android:layout_alignLeft="@id/reuse_idea_text"
+        android:layout_below="@id/reuse_idea_text"
+        android:textSize="15sp"
+        />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/reuse_idea_text"
-        android:layout_marginStart="16dp"
+        android:layout_below="@id/reuse_idea_url"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="0dp"
         android:layout_marginEnd="16dp"
         android:background="@color/black" />
 

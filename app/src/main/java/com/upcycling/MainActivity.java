@@ -203,55 +203,47 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
             }
         });
-        BottomSheetFragment bottomSheetFragment = (BottomSheetFragment) getSupportFragmentManager().findFragmentById(R.id.bottom_sheet_fragment_container);
-        Button testbutton = findViewById(R.id.test_button);
-        testbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomSheetFragment.showBottomSheet(displayProduct, true);
-            }
-        });
 
 //        fetchProductDetails(3019081239237L); // Example barcode
     }
 
-//    private void showResultPopup(String message) {
-//        runOnUiThread(() -> {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//            builder.setTitle("Résultat de la requête");
-//            builder.setMessage(message);
-//            builder.setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
-//            AlertDialog dialog = builder.create();
-//            dialog.show();
-//        });}
-//
-//    private void fetchProductDetails(long codebarre) {
-//        new Thread(() -> {
-//            String urlString = "http://10.0.2.2:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
-//            try {
-//                URL url = new URL(urlString);
-//                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//                connection.setRequestMethod("GET");
-//                connection.connect();
-//                int responseCode = connection.getResponseCode();
-//                if (responseCode == HttpURLConnection.HTTP_OK) {
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-//                    StringBuilder response = new StringBuilder();
-//                    String line;
-//                    while ((line = reader.readLine()) != null) {
-//                        response.append(line);
-//                    }
-//                    reader.close();
-//                    showResultPopup("Réponse de l'API : " + response.toString());
-//                } else {
-//                    showResultPopup("Erreur API : Code de réponse : " + responseCode);
-//                }
-//            } catch (Exception e) {
-//                showResultPopup("Exception API : " + e.getMessage());
-//                e.printStackTrace();
-//            }
-//        }).start();
-//    }
+    private void showResultPopup(String message) {
+        runOnUiThread(() -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Résultat de la requête");
+            builder.setMessage(message);
+            builder.setPositiveButton("OK", (dialog, id) -> dialog.dismiss());
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });}
+
+    private void fetchProductDetails(long codebarre) {
+        new Thread(() -> {
+            String urlString = "http://10.0.2.2:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
+            try {
+                URL url = new URL(urlString);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+                    showResultPopup("Réponse de l'API : " + response.toString());
+                } else {
+                    showResultPopup("Erreur API : Code de réponse : " + responseCode);
+                }
+            } catch (Exception e) {
+                showResultPopup("Exception API : " + e.getMessage());
+                e.printStackTrace();
+            }
+        }).start();
+    }
 
     // TODO : Add Historic
 }
