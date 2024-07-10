@@ -38,7 +38,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES ('Thon Entier au Naturel','3019081239237',0.00,'https://images.openfoodfacts.org/images/products/301/908/123/9237/front_fr.36.full.jpg'),('Petits pots de crème au caramel','3023290035689',0.00,'https://erposcar.msol.dev/focus/products/3502110010674.webp'),('Oasis Pomme Cassis Framboise','3124480186584',7.00,NULL),('IceTea Lipton','3168930171058',5.75,NULL),('Brique de lait La Marque du Conso','3248340054063',6.50,NULL),('12 oeufs Label Rouge','32513020081249',6.00,NULL),('Thé glacé Framboise','3502110010674',0.00,'https://api-drive.drive.supermarchesmatch.fr/image/sku/zoom/1487797_1.webp'),('Pot de Nutella','59032823',8.50,NULL),('Bouteille de Ricard','9163937016005',8.50,NULL);
+INSERT INTO `products` VALUES ('Thon Entier au Naturel','3019081239237',0.00,'https://images.openfoodfacts.org/images/products/301/908/123/9237/front_fr.36.full.jpg'),('Petits pots de crème au caramel','3023290035689',0.00,'https://api-drive.drive.supermarchesmatch.fr/image/sku/zoom/1487797_1.webp'),('Oasis Pomme Cassis Framboise','3124480186584',7.00,NULL),('IceTea Lipton','3168930171058',5.75,NULL),('Brique de lait La Marque du Conso','3248340054063',6.50,NULL),('12 oeufs Label Rouge','32513020081249',6.00,NULL),('Thé glacé Framboise','3502110010674',0.00,'https://erposcar.msol.dev/focus/products/3502110010674.webp'),('Pot de Nutella','59032823',8.50,NULL),('Bouteille de Ricard','9163937016005',8.50,NULL);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-09 16:50:03
+-- Dump completed on 2024-07-10  9:38:09
