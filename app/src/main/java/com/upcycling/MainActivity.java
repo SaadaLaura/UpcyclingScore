@@ -15,6 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.room.Room;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+        History history = Room.databaseBuilder(getApplicationContext(), History.class,
+                    "history").build();
+        HistoryRequests historyRequests = history.historyRequests();
+        historyRequests.insertAll(new ProductHistory(123123, "test",
+                12.5f, "azerty", "azerty, azerty, azerty"));
         deleteButton = findViewById(R.id.delete_button);
         cancelButton = findViewById(R.id.cancel_button); // Initialize the cancel button
 
