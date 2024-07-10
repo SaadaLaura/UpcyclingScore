@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
         History history = Room.databaseBuilder(getApplicationContext(), History.class, "history")
                     .allowMainThreadQueries()
                     .build();
-        HistoryRequests historyRequests = history.historyRequests();
-
 
         deleteButton = findViewById(R.id.delete_button);
         cancelButton = findViewById(R.id.cancel_button); // Initialize the cancel button
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.deleteSelectedItems();
+                adapter.deleteSelectedItems(history);
                 deleteButton.setVisibility(View.GONE);
                 cancelButton.setVisibility(View.GONE);
             }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "product")
 public class ProductHistory {
     @PrimaryKey
-    public int barcode;
+    public long barcode;
     public String name;
     public float score;
     public String imageUrl;
@@ -14,7 +14,7 @@ public class ProductHistory {
 
     public ProductHistory () {}
 
-    public ProductHistory(int barcode,
+    public ProductHistory(long barcode,
                           String name,
                           float score,
                           String imageUrl,

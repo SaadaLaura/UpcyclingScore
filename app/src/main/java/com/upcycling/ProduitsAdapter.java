@@ -163,12 +163,18 @@ public class ProduitsAdapter extends RecyclerView.Adapter<ProduitsAdapter.ViewHo
         notifyDataSetChanged();
         updateBandeauVisibility();
     }
-    public void deleteSelectedItems() {
+    public void deleteSelectedItems(History history) {
         // Itération à l'envers pour éviter les problèmes de décalage d'index lors de la suppression
         for (int i = produitsList.size() - 1; i >= 0; i--) {
             Product produit = produitsList.get(i);
             if (produit.isShowCheckBox() && produit.isChecked()) {
                 produitsList.remove(i); // Suppression de l'élément
+
+                HistoryRequests historyDao = history.historyRequests();
+                long[] productsBarcode = { produit.getBarcode() };
+                if (!historyDao.getByBarcodes(productsBarcode).isEmpty()) {
+                    history.historyRequests().delete(produit.getBarcode());
+                }
             }
         }
         notifyDataSetChanged(); // Notifier l'adaptateur du changement

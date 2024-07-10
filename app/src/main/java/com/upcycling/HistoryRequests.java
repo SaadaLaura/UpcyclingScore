@@ -12,7 +12,7 @@ public interface HistoryRequests {
     List<ProductHistory> getAll();
 
     @Query("SELECT * FROM product WHERE barcode IN (:barcodes)")
-    List<ProductHistory> getByBarcodes(int[] barcodes);
+    List<ProductHistory> getByBarcodes(long[] barcodes);
 
     @Query("SELECT barcode FROM product")
     List<Integer> getBarcodes();
@@ -21,7 +21,7 @@ public interface HistoryRequests {
     void insertAll(ProductHistory... products);
 
     @Query("DELETE FROM product where barcode = :productBarcode")
-    void delete(int productBarcode);
+    void delete(long productBarcode);
 
     @Query("DELETE from product")
     void clear();
