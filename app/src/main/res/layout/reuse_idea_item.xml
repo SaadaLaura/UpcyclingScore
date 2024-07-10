@@ -28,6 +28,16 @@
         android:textSize="15sp"
         />
 
+    <ImageView
+        android:id="@+id/copy_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="1dp"
+        android:contentDescription="copy_url"
+        android:padding="6dp"
+        android:src="@drawable/copie_icone" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"

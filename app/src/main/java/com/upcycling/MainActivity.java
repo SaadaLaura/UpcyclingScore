@@ -124,19 +124,19 @@ public class MainActivity extends AppCompatActivity {
                                                 ReuseIdea.ReuseType.PRACTICAL,
                                                 "Stockage",
                                                 "Réutiliser pour stocker des choses",
-                                                "https://www.azerty.com/"
+                                                "https://blog.kisskissbankbank.com/actualites/huit-sites-inspirants-pour-une-deco-diy/"
                                         ),
                                         new ReuseIdea(
                                                 ReuseIdea.ReuseType.PRACTICAL,
                                                 "Chapeau",
                                                 "Découpez et pliez la boite afin de pouvoir vous protéger de la pluie",
-                                                "https://www.azerty.com/"
+                                                "https://www.diy.fr/"
                                         ),
                                         new ReuseIdea(
                                                 ReuseIdea.ReuseType.ARTISTIC,
                                                 "Origami",
                                                 "Un peu chiant",
-                                                "https://www.azerty.com/"
+                                                "https://www.diy.fr/"
                                         ),
                                 }
                         )

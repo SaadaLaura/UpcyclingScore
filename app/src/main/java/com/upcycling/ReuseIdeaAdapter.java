@@ -1,11 +1,15 @@
 package com.upcycling;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
 
@@ -14,7 +18,9 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
-
+import android.content.Intent;
+import android.net.Uri;
+import android.widget.Toast;
 
 
 public class ReuseIdeaAdapter extends RecyclerView.Adapter<ReuseIdeaAdapter.ViewHolder> {
@@ -60,8 +66,20 @@ public class ReuseIdeaAdapter extends RecyclerView.Adapter<ReuseIdeaAdapter.View
 
         holder.reuseIdeaTextView.setText(builders);
 
-        holder.urlTextView.setText(reuseIdea.getUrlInstructions());
+        //holder.urlTextView.setText(reuseIdea.getUrlInstructions());
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(reuseIdea.getUrlInstructions()));
+            v.getContext().startActivity(intent);
+        });
 
+        ImageView copyIcon = holder.itemView.findViewById(R.id.copy_icon);
+        copyIcon.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("URL", reuseIdea.getUrlInstructions());
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(v.getContext(), "URL copied to clipboard", Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
