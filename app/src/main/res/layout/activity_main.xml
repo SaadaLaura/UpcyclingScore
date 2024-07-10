@@ -80,7 +80,8 @@
             android:layout_height="654dp"
             android:layout_weight="1"
             android:scrollbars="vertical"
-            tools:listitem="@layout/fragment_element_produits" />
+            tools:listitem="@layout/fragment_element_produits"
+            />
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
@@ -97,7 +98,9 @@
         android:layout_margin="16dp"
         android:contentDescription="Scan button"
         app:backgroundTint="@color/green"
-        android:layout_gravity="bottom|end" />
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/logo_barrecode"
+        app:maxImageSize="50dp"/>
     <!--    android:src="@drawable/ic_scan"-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

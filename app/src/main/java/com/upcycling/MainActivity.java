@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        fetchProductDetails(3019081239237L); // Example barcode
+        fetchProductDetails(3019081239237L); // Example barcode
     }
 
     private void showResultPopup(String message) {
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchProductDetails(long codebarre) {
         new Thread(() -> {
-            String urlString = "http://10.0.2.2:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
+            String urlString = "http://172.20.10.13:5000/products/" + codebarre; //remplacer par l'adresse mis dans le network
             try {
                 URL url = new URL(urlString);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
