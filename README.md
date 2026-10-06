@@ -10,7 +10,7 @@ Pour chaque produit reconnu, l'application affiche un **score sur 20** ainsi que
 
 ### 📷 Scan des produits
 
-* Scan du code-barres d'un produit à l'aide de la caméra du téléphone.
+* Scan du code-barres d’un produit directement depuis l’application via la caméra du téléphone.
 * Récupération des informations du produit via une API.
 * Affichage du nom, de la photo, du type d'emballage et du score de réutilisation.
 * Gestion des produits non référencés et des codes-barres non reconnus.
